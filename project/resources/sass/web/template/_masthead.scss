@@ -1,0 +1,70 @@
+.page-header {
+    min-height: 30rem;
+    position: relative;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    display: block;
+    width: 100%;
+    height: auto;
+    background-color: #1da1f5;
+    background-image: linear-gradient(135deg, #1da1f5 0%, rgba(128, 57, 218, 0.8) 100%);
+
+    .page-header-content {
+        .page-header-title {
+            font-size: 2.5rem;
+        }
+
+        .page-header-text {
+            font-size: 1.15rem;
+        }
+
+        .page-header-text.small {
+            font-size: 0.9rem;
+        }
+
+        .page-header-signup {
+            -webkit-box-pack: center;
+            justify-content: center;
+        }
+
+        .page-header-signup .form-control {
+            font-size: 0.875em;
+            padding: 0 1.5rem;
+            height: 2.725rem;
+            line-height: 1.5;
+        }
+    }
+
+    .svg-border-rounded svg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3rem;
+        width: 100%;
+    }
+}
+
+.page-header-dark {
+    color: #fff;
+    background-color: #1f2d41;
+
+    .page-header-title {
+        color: #fff;
+    }
+
+    .page-header-text {
+        color: rgba(255, 255, 255, 0.5) !important;
+    }
+}
+
+.page-header-light {
+    background-color: #eff3f9;
+
+    .page-header-text {
+        color: #687281;
+
+        a {
+            color: #485260;
+        }
+    }
+}
