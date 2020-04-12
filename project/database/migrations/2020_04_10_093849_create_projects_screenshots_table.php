@@ -17,8 +17,8 @@ class CreateProjectsScreenshotsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('project_id');
             $table->string('src');
+            $table->unsignedInteger('main')->default(0);
             $table->unsignedInteger('order')->default(0);
-            $table->unsignedTinyInteger('enable')->default(0);
 
             $table->foreign('project_id')
                 ->on('projects')

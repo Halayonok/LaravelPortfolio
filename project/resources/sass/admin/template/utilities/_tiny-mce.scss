@@ -1,0 +1,25 @@
+.mce-branding {
+    display: none!important;
+}
+
+.mce_area_container {
+
+    .mce-tinymce {
+        box-shadow: none!important;
+    }
+
+    & > div {
+        border-radius: 0.2rem;
+        border: 1px solid #d1d3e2;
+
+
+        .mce-top-part::before {
+            box-shadow: none!important;
+        }
+    }
+
+    .mce-statusbar {
+        border-bottom-right-radius: .2rem;
+        border-bottom-left-radius: .2rem;
+    }
+}

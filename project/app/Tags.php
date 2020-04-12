@@ -80,8 +80,8 @@ class Tags extends Model implements EnabledModelInterface
         foreach (LocalisationToggleService::getLanguages() as $language) {
             $insertData[] = [
                 'model_id' => $this->id,
-                'language' => $language,
-                'title' => $request->post('title_' . $language) ?? $this->back_name,
+                'language_id' => $language->id,
+                'title' => $request->post('title_' . $language->id) ?? $this->back_name,
             ];
         }
 

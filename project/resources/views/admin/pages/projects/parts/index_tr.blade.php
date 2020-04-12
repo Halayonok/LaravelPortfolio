@@ -17,10 +17,10 @@
         </td>
 
         <td class="text-right">
-            <a class="btn btn-info btn-supersm" href="{{ route('admin-projects-update', ['id' => $model->id]) }}">
+            <a class="btn btn-sm btn-circle btn-info" href="{{ route('admin-projects-update', ['id' => $model->id]) }}">
                 <i class="fas fa-edit"></i>
             </a>
-            <button class="btn btn-danger btn-supersm init_delete_model"
+            <button class="btn btn-sm btn-circle btn-danger init_delete_model"
                     data-toggle="modal"
                     data-target="#delete_modal"
                     data-delete-action="{{ route('admin-projects-delete', ['id' => $model->id]) }}"

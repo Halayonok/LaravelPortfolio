@@ -50,7 +50,6 @@
     margin-left: 1rem;
     margin-right: 1rem;
     margin-bottom: -20px;
-    background-color: #2bbbad;
     z-index: 1;
     position: relative;
     -webkit-border-radius: .25rem;
@@ -79,9 +78,11 @@
     cursor: pointer;
 }
 
-.btn.btn-supersm, .btn-group-supersm > .btn {
-    padding: 0.3rem 1rem;
-    font-size: 0.64rem;
+.btn.btn-supersm {
+    padding: .1rem;
+    font-size: 0.32rem;
+    height: 1rem;
+    width: 1rem;
 }
 
 .invalid-feedback {
@@ -147,7 +148,6 @@
 
 .tab-content {
     padding: 1rem;
-    padding-top: 2rem;
 }
 
 .tab-content > .tab-pane {
@@ -405,11 +405,11 @@
                 margin: 0 5px 0 0;
                 display: block;
                 border-radius: 0;
-                background-color: #2ab6b6 !important;
+                background-color: $lvs !important;
             }
 
             .badge-secondary {
-                background-color: #2ab6b6 !important;
+                background-color: $lvs !important;
             }
 
 
@@ -417,9 +417,9 @@
     }
 }
 
-$lvs: #2ab6b6 !default;
 
-.btn-info, .tabs-cyan {
+
+.tabs-cyan {
     background-color: $lvs !important;
     color: #fff !important;
 }
@@ -450,7 +450,6 @@ a {
             visibility: none;
         }
 
-
         .box__uploading {
             display: block;
         }
@@ -463,6 +462,46 @@ a {
     .no-js {
         .box__button {
             display: block;
+        }
+    }
+}
+
+.bg-contrast {
+    background: #e4e6f0;
+}
+
+.screenshots {
+
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    column-gap: 1.25rem;
+    orphans: 1;
+    widows: 1;
+    column-count: 3;
+
+    .screenshot {
+        position: relative;
+        margin-right: 1%;
+        margin-bottom: 10px;
+        display: inline-block;
+        width: 100%;
+
+        .delete_screenshot {
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            padding: 3px;
+            font-size: 12px;
+            width: 1.5rem;
+            height: 1.5rem;
+            border: 1px solid #fff;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: .2rem;
+            border: 1px solid #d1d3e2;
         }
     }
 }

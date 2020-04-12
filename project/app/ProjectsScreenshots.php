@@ -59,7 +59,7 @@ class ProjectsScreenshots extends Model
                 'project_id' => $project->id,
                 'src' => $src,
                 'order' => (int)$idx,
-                'main' => !$idx ? self::MAIN : self::NOT_MAIN
+                'main' => !$idx ? self::MAIN : self::NOT_MAIN,
             ];
         }
 
@@ -73,11 +73,11 @@ class ProjectsScreenshots extends Model
     /**
      * @param UploadedFile $file
      * @param Projects $project
-     * @return bool
+     * @return bool|false|string
      */
-    public function saveFile(UploadedFile $file, Projects $project): bool
+    public function saveFile(UploadedFile $file, Projects $project)
     {
-        if (!isset($application->id)) {
+        if (!isset($project->id)) {
             return false;
         }
 
@@ -85,7 +85,7 @@ class ProjectsScreenshots extends Model
 
         $fileService = FilesService::getService();
 
-        return $fileService->saveFile($fileService::SCREENSHOTS_FOLDER, MyUploadedFile::createFromBase($file), $prefix);
+        return $fileService->saveFile($fileService::SCREENSHOTS_FOLDER . DIRECTORY_SEPARATOR . str_replace(' ', '_', $project->back_name), MyUploadedFile::createFromBase($file), $prefix);
     }
 
     /**

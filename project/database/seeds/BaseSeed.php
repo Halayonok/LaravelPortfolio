@@ -47,5 +47,25 @@ class BaseSeed extends Seeder
                 ]
             ]);
         }
+
+        if (!DB::table('languages')->count()) {
+            DB::table('languages')->insert([
+                [
+                    'code' => 'by',
+                    'main' => \App\Languages::MAIN,
+                    'enable' => \App\Languages::$enableFlag,
+                ],
+                [
+                    'code' => 'en',
+                    'main' => \App\Languages::NOT_MAIN,
+                    'enable' => \App\Languages::$enableFlag,
+                ],
+                [
+                    'code' => 'ru',
+                    'main' => \App\Languages::NOT_MAIN,
+                    'enable' => \App\Languages::$enableFlag,
+                ],
+            ]);
+        }
     }
 }

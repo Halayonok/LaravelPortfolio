@@ -50,6 +50,7 @@ class ProjectsController extends Controller
         if ($request->isMethod('get')) {
             return view('admin.pages.projects.update', [
                 'model' => $model,
+                'data' => $model->data->keyBy('language_id'),
                 'modelTags' => $model->tags->keyBy('id')->all(),
                 'tags' => Tags::all(),
                 'languages' => LocalisationToggleService::getLanguages(),
@@ -57,7 +58,6 @@ class ProjectsController extends Controller
             ]);
         }
 
-        $model = new $this->modelClass();
         if (!$model->builder($request)) {
             abort(500, 'update error');
         }

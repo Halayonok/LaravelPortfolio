@@ -3,14 +3,27 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\BootController;
+use App\Services\ResponseManager\ResponseTrait;
+use Illuminate\Support\Facades\Route;
 
 class Controller extends BootController
 {
+    use ResponseTrait;
+
+    const NOTIFY_CREATED = ['created', 'Модель создана'];
+    const NOTIFY_UPDATED = ['updated', 'Модель обновлена'];
+    const NOTIFY_DELETED = ['deleted', 'Модель удалена'];
+
+    const NOTIFY_ERROR_CREATED = ['create_error', 'Модель не создана'];
+    const NOTIFY_ERROR_UPDATED = ['update_error', 'Модель не обновлена'];
+    const NOTIFY_ERROR_DELETED = ['delete_error', 'Модель не удалена'];
+    const NOTIFY_NOT_FOUND = ['not_found', 'Модель не найдена'];
+
     public function __construct()
     {
         $this->middleware(function ($request, \Closure $next) {
             \View::share('adminMainMenu', [
-                'dashboard' => [
+                'admin-dashboard' => [
                     'type' => 'route',
                     'title' => 'Главная',
                     'icon' => 'fas fa-fw fa-tachometer-alt',
@@ -24,13 +37,13 @@ class Controller extends BootController
                     'icon' => 'fas fa-code',
 
                     'routes' => [
-                        'projects' => [
+                        'admin-projects' => [
                             'type' => 'route',
                             'title' => 'Проекты',
                             'route' => route('admin-projects'),
                             'blank' => false
                         ],
-                        'tags' => [
+                        'admin-tags' => [
                             'type' => 'route',
                             'title' => 'Теги',
                             'route' => route('admin-tags'),
@@ -45,19 +58,19 @@ class Controller extends BootController
                     'icon' => 'fas fa-fw fa-cog',
 
                     'routes' => [
-                        'languages' => [
+                        'admin-languages' => [
                             'type' => 'route',
                             'title' => 'Локализация',
                             'route' => route('admin-languages'),
                             'blank' => false
                         ],
-                        'users' => [
+                        'admin-users' => [
                             'type' => 'route',
                             'title' => 'Пользователи',
                             'route' => route('admin-users'),
                             'blank' => false
                         ],
-                        'settings' => [
+                        'admin-settings' => [
                             'type' => 'route',
                             'title' => 'Настройки',
                             'route' => route('admin-settings'),
@@ -73,6 +86,8 @@ class Controller extends BootController
 
                 ]
             ]);
+
+            \View::share('currentRouteName', Route::currentRouteName());
 
             /*foreach (Settings::all() as $settingsParameter) {
                 \View::share($settingsParameter->label, $settingsParameter->value);

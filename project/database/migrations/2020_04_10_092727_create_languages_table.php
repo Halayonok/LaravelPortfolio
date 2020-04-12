@@ -18,7 +18,6 @@ class CreateLanguagesTable extends Migration
             $table->string('code')->unique();
             $table->unsignedInteger('main')->default(0);
             $table->unsignedTinyInteger('enable')->default(0);
-            $table->timestamps();
         });
     }
 

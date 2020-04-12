@@ -115,7 +115,7 @@ class Projects extends Model implements EnabledModelInterface
         foreach (LocalisationToggleService::getLanguages() as $language) {
             $insertData[] = [
                 'model_id' => $this->id,
-                'language' => $language,
+                'language_id' => $language->id,
                 'title' => $request->post('title_' . $language->id) ?? $this->back_name,
                 'content' => $request->post('content_' . $language->id) ?? null,
                 'meta_title' => $request->post('meta_title_' . $language->id) ?? null,

@@ -7,7 +7,7 @@
 ?>
 
 @section('content')
-    <nav aria-label="breadcrumb">
+    <nav aria-label="breadcrumb" class="shadow">
         <ol class="breadcrumb small bg-white">
             <li class="breadcrumb-item">Портфолио</li>
             <li class="breadcrumb-item active"><a href="{{ route('admin-projects') }}">Проекты</a></li>
@@ -23,9 +23,11 @@
                 </div>
 
                 <div class="col-6 p-0 d-flex align-items-center justify-content-end">
-                    <a class="btn btn-info btn-sm" href="{{ route('admin-projects-create') }}">
-                        <i class="fas fa-plus-circle"></i>
-                        Добавить проект
+                    <a href="{{ route('admin-projects-create') }}" class="btn btn-icon-split btn-sm btn-info">
+                            <span class="icon text-white-50">
+                            <i class="fas fa-plus-circle"></i>
+                            </span>
+                        <span class="text">Новый проект</span>
                     </a>
                 </div>
             </div>
@@ -33,12 +35,12 @@
 
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-hover table-sm">
+                <table class="table table-hover table-bordered table-sm">
                     <thead>
                     <tr>
                         <th>Название</th>
                         <th>Разработка</th>
-                        <th>Статус</th>
+                        <th class="text-center">Статус</th>
                         <th></th>
                     </tr>
                     </thead>

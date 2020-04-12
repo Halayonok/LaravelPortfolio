@@ -39,6 +39,10 @@ require('./template');
 
 require('./image-uploader');
 
+require('./screenshot-delete');
+
 require('bootstrap');
+
+require('lightbox2');
 
 window.bsCustomFileInput = require("bs-custom-file-input");

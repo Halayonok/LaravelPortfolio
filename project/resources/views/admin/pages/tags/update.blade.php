@@ -1,21 +1,14 @@
 @extends('admin.layouts.base')
 
 @section('content')
-    <nav aria-label="breadcrumb">
+
+    <nav aria-label="breadcrumb" class="shadow">
         <ol class="breadcrumb small bg-white">
-            <li class="breadcrumb-item"><a href="{{ route('admin-users') }}">Персонал</a></li>
-            <li class="breadcrumb-item active">Редактировать</li>
+            <li class="breadcrumb-item"><a href="{{ route('admin-tags') }}">Теги</a></li>
+            <li class="breadcrumb-item active">Редактировать тег</li>
         </ol>
     </nav>
 
-    <div class="card">
-        <!--Card content-->
-        <div class="card-body">
-            <div class="row m-0">
-                <div class="col-12">
-                    @include('admin.pages.users._form')
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('admin.pages.tags._form')
+
 @endsection

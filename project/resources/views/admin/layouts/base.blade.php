@@ -38,6 +38,7 @@
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
+
         @foreach($adminMainMenu as $key => $item)
             @if ($item['type'] === 'route')
                 <li class="nav-item">
@@ -49,36 +50,40 @@
 
             @if ($item['type'] === 'group')
 
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_{{ $key }}"
-                           aria-expanded="true" aria-controls="collapse_{{ $key }}">
-                            <i class="{{ $item['icon'] }}"></i>
-                            <span>{{ $item['title'] }}</span>
-                        </a>
+                <li class="nav-item">
+                    <a class="nav-link @if(!key_exists($currentRouteName, $item['routes'])) collapsed @endif" href="#"
+                       data-toggle="collapse" data-target="#collapse_{{ $key }}"
+                       aria-expanded="true" aria-controls="collapse_{{ $key }}">
+                        <i class="{{ $item['icon'] }}"></i>
+                        <span>{{ $item['title'] }}</span>
+                    </a>
 
-                        <div id="collapse_{{ $key }}" class="collapse" aria-labelledby="heading_{{ $key }}"
-                             data-parent="#accordionSidebar">
-                            <div class="bg-white py-2 collapse-inner rounded">
+                    <div id="collapse_{{ $key }}"
+                         class="collapse @if(key_exists($currentRouteName, $item['routes'])) show @endif"
+                         aria-labelledby="heading_{{ $key }}"
+                         data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
 
-                                <h6 class="collapse-header">{{ $item['title'] }}</h6>
+                            <h6 class="collapse-header">{{ $item['title'] }}</h6>
 
-                                @foreach($item['routes'] as $item)
-                                    <a class="collapse-item" href="{{ $item['route'] }}" @if($item['blank']) target="_blank" @endif>{{ $item['title'] }}</a>
-                                @endforeach
+                            @foreach($item['routes'] as $routeName => $item)
+                                <a class="collapse-item @if($routeName === $currentRouteName) active @endif" href="{{ $item['route'] }}"
+                                   @if($item['blank']) target="_blank" @endif>{{ $item['title'] }}</a>
+                            @endforeach
 
-                            </div>
                         </div>
-                    </li>
+                    </div>
+                </li>
 
-            @endif
+        @endif
 
-            @if(!$loop->last)
+        @if(!$loop->last)
             <!-- Divider -->
                 <hr class="sidebar-divider">
-            @endif
-        @endforeach
+        @endif
+    @endforeach
 
-        <!-- Divider -->
+    <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
         <!-- Sidebar Toggler (Sidebar) -->
@@ -107,26 +112,28 @@
 
                     <!-- Nav Item - Messages -->
                     <li class="nav-item dropdown no-arrow mx-1">
-                        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-envelope fa-fw"></i>
                             <!-- Counter - Messages -->
                             <span class="badge badge-danger badge-counter">0</span>
                         </a>
                         <!-- Dropdown - Messages -->
-                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="messagesDropdown">
                             <h6 class="dropdown-header">
                                 Сообщения
                             </h6>
-                           {{-- <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                                    <div class="status-indicator bg-success"></div>
-                                </div>
-                                <div class="font-weight-bold">
-                                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                                    <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                </div>
-                            </a>--}}
+                            {{-- <a class="dropdown-item d-flex align-items-center" href="#">
+                                 <div class="dropdown-list-image mr-3">
+                                     <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                                     <div class="status-indicator bg-success"></div>
+                                 </div>
+                                 <div class="font-weight-bold">
+                                     <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
+                                     <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                 </div>
+                             </a>--}}
 
                             {{--<a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>--}}
                         </div>
@@ -136,12 +143,15 @@
 
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
-                            <img class="img-profile rounded-circle" src="{{ asset('images/empty_logo.png') }}" width="30">
+                            <img class="img-profile rounded-circle" src="{{ asset('images/empty_logo.png') }}"
+                                 width="30">
                         </a>
                         <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="#">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Профиль
@@ -238,7 +248,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         tinymce.init({
-            selector: '.textarea-editor',
+            selector: '.textarea_tinymce',
             plugins: [
                 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
                 'searchreplace wordcount visualblocks visualchars code fullscreen',
@@ -247,7 +257,7 @@
             ],
             toolbar: 'forecolor backcolor | insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media',
             relative_urls: false,
-            height: 600,
+            height: 400,
             file_browser_callback: function (field_name, url, type, win) {
                 tinyMCE.activeEditor.windowManager.open({
                     file: '/file-manager/tinymce',
@@ -267,18 +277,6 @@
                 freeTiny.style.display = 'none';
             }
         });
-    });
-
-    $(document).ready(function () {
-        $('.sortable_table').DataTable({
-            paging: false,
-            searching: false,
-            language: {
-                info: '',
-                infoEmpty: ''
-            }
-        });
-        $('.dataTables_length').addClass('bs-select');
     });
 
     document.addEventListener('DOMContentLoaded', function () {

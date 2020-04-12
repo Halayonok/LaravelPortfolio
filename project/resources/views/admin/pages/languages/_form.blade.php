@@ -24,14 +24,18 @@
 
                 <div class="col-6 p-0 d-flex align-items-center justify-content-end">
                     @if(isset($model))
-                        <a href="{{ route('admin-languages-create') }}" class="btn btn-info btn-sm mr-2">
+                        <a href="{{ route('admin-languages-create') }}" class="btn btn-icon-split btn-sm btn-info mr-2">
+                            <span class="icon text-white-50">
                             <i class="fas fa-plus-circle"></i>
-                            Добавить ещё один язык
+                            </span>
+                            <span class="text">Новый язык</span>
                         </a>
                     @endif
-                    <button class="btn btn-success btn-sm" type="submit">
+                    <button class="btn btn-icon-split btn-sm btn-success" type="submit">
+                        <span class="icon text-white-50">
                         <i class="fas fa-save"></i>
-                        Сохранить
+                        </span>
+                        <span class="text">Сохранить</span>
                     </button>
                 </div>
             </div>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <nav aria-label="breadcrumb">
+    <nav aria-label="breadcrumb" class="shadow">
         <ol class="breadcrumb small bg-white">
             <li class="breadcrumb-item"><a href="{{ route('admin-projects') }}">Проекты</a></li>
             <li class="breadcrumb-item active">Добавить проект</li>
